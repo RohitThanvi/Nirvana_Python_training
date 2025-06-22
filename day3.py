@@ -60,6 +60,8 @@ def check_winner(board, turn, marker):
     
     # if any(board[a] == board[b] == board[c] == marker.get(turn) for a, b, c in win_cond)
 
+def draw(board):
+    return all(str(x).upper() in ["X", "O"] for x in board[1:])
 
 def tic_tac_toe():
     # board = [" "] * 10
@@ -70,7 +72,7 @@ def tic_tac_toe():
     if p2 == "X":
         turn = "p2"
     while True:
-
+        os.system('cls')
         print_board(board)
 
         board, turn = player_input(board, turn, marker)
@@ -78,6 +80,9 @@ def tic_tac_toe():
         win, turn = check_winner(board, turn, marker)
         if win:
             print(f"{turn} is winner")
+            break
+        if draw(board):
+            print("Game Draw")
             break
         
         if turn == "p1":
@@ -91,7 +96,7 @@ def tic_tac_toe():
 if __name__ == "__main__":
     """Here Program starts"""
     print("Welcome Players to Tic Tac Toe")
-    # tic_tac_toe()
+    tic_tac_toe()
 
     """File handling"""
 
@@ -103,7 +108,7 @@ if __name__ == "__main__":
     
     # with context manager
     
-    with open("demo.txt", "w") as f:
-        # print(f.read())
-        f.write("/n hello this is Hridesh")
+    # with open("demo.txt", "w") as f:
+    #     # print(f.read())
+    #     f.write("/n hello this is Hridesh")
 
